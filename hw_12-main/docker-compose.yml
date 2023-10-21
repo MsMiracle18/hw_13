@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql://username:password@db:5432/mydb"
+      SECRET_KEY: "your-secret-key"
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+
+  # Додайте інші сервіси, які ваш додаток може використовувати, якщо потрібно
