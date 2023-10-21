@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: "postgresql+psycopg2://postgres:567234@localhost:8088/hw_13"
+      DATABASE_URL: "postgresql+psycopg2://postgres:567234@localhost:8088/hw_11"
       SECRET_KEY: "your-secret-key"
 
   db:
@@ -18,5 +18,3 @@ services:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
-
-  # Додайте інші сервіси, які ваш додаток може використовувати, якщо потрібно
