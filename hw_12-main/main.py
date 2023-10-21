@@ -3,6 +3,17 @@ from fastapi.middleware.throttle import Throttle, SimpleThrottleLimiter
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import users
+from decouple import config
+
+# завантажити змінні середовища з .env файлу
+DATABASE_URL = config('DATABASE_URL')
+SECRET_KEY = config('SECRET_KEY')
+CLOUDINARY_API_KEY = config('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET = config('CLOUDINARY_API_SECRET')
+
+# використати змінні середовища
+print(DATABASE_URL)
+print(SECRET_KEY)
 
 app = FastAPI()
 
