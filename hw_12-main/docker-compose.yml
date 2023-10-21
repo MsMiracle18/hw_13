@@ -1,20 +1,16 @@
 version: '3'
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  redis:
+    image: redis:alpine
     ports:
       - "8000:8088"
-    depends_on:
-      - db
+  postgres:
+    image: postgres:12
     environment:
-      DATABASE_URL: "postgresql+psycopg2://postgres:567234@localhost:8088/hw_11"
-      SECRET_KEY: "your-secret-key"
-
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydb
+      POSTGRES_DB: hw_11
+      POSTGRES_USER: msmiracle
+      POSTGRES_PASSWORD: 567234
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
